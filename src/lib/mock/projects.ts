@@ -1,0 +1,163 @@
+import type { Project, OptimizationJob } from "@/lib/types";
+
+/** Sample projects. Illustrative data; see SAMPLE_DATA_NOTICE in layouts.ts. */
+export const projects: Project[] = [
+  {
+    id: "prj-community-centre",
+    name: "Community Centre",
+    type: "civic",
+    status: "completed",
+    plot: { width: 30, height: 20 },
+    spaces: 6,
+    updatedAt: "2026-11-03T08:40:00Z",
+    createdAt: "2026-10-20T09:00:00Z",
+    owner: "Lakshita Singh",
+    description:
+      "Small community centre with reception, two classrooms, an office, toilets, storage and circulation space.",
+    layoutIds: ["lay-a", "lay-b", "lay-c", "lay-d"],
+    progress: 100,
+  },
+  {
+    id: "prj-library-extension",
+    name: "Library Extension",
+    type: "civic",
+    status: "in-progress",
+    plot: { width: 40, height: 25 },
+    spaces: 8,
+    updatedAt: "2026-11-02T14:10:00Z",
+    createdAt: "2026-10-22T11:30:00Z",
+    owner: "Nandinee Verma",
+    description:
+      "Reading hall, stacks, study rooms and a children's section attached to an existing library block.",
+    layoutIds: ["lay-b"],
+    progress: 60,
+  },
+  {
+    id: "prj-school-block",
+    name: "School Block",
+    type: "education",
+    status: "optimizing",
+    plot: { width: 50, height: 30 },
+    spaces: 12,
+    updatedAt: "2026-11-01T16:00:00Z",
+    createdAt: "2026-10-25T10:00:00Z",
+    owner: "Shivangi Mehta",
+    description: "Twelve-space teaching block with staff room, labs and a central corridor spine.",
+    layoutIds: ["lay-c"],
+    progress: 75,
+  },
+  {
+    id: "prj-academic-wing",
+    name: "Academic Wing",
+    type: "education",
+    status: "draft",
+    plot: { width: 45, height: 28 },
+    spaces: 10,
+    updatedAt: "2026-10-30T12:00:00Z",
+    createdAt: "2026-10-30T12:00:00Z",
+    owner: "Lakshita Singh",
+    layoutIds: [],
+    progress: 10,
+  },
+  {
+    id: "prj-admin-building",
+    name: "Admin Building",
+    type: "office",
+    status: "completed",
+    plot: { width: 32, height: 18 },
+    spaces: 7,
+    updatedAt: "2026-10-28T09:30:00Z",
+    createdAt: "2026-10-12T09:00:00Z",
+    owner: "Rupesh Sharma",
+    layoutIds: ["lay-a"],
+    progress: 100,
+  },
+  {
+    id: "prj-research-lab",
+    name: "Research Lab",
+    type: "research",
+    status: "in-progress",
+    plot: { width: 28, height: 16 },
+    spaces: 5,
+    updatedAt: "2026-10-27T17:45:00Z",
+    createdAt: "2026-10-15T09:00:00Z",
+    owner: "Ananya Gupta",
+    layoutIds: ["lay-d"],
+    progress: 45,
+  },
+  {
+    id: "prj-health-post",
+    name: "Primary Health Post",
+    type: "civic",
+    status: "archived",
+    plot: { width: 24, height: 16 },
+    spaces: 6,
+    updatedAt: "2026-09-30T10:00:00Z",
+    createdAt: "2026-09-02T10:00:00Z",
+    owner: "Lakshita Singh",
+    layoutIds: [],
+    progress: 100,
+  },
+  {
+    id: "prj-studio-block",
+    name: "Design Studio Block",
+    type: "education",
+    status: "draft",
+    plot: { width: 36, height: 22 },
+    spaces: 9,
+    updatedAt: "2026-10-18T10:00:00Z",
+    createdAt: "2026-10-18T10:00:00Z",
+    owner: "Nandinee Verma",
+    layoutIds: [],
+    progress: 5,
+  },
+];
+
+export const optimizationJobs: OptimizationJob[] = [
+  {
+    id: "job-1",
+    projectId: "prj-community-centre",
+    projectName: "Community Centre",
+    stage: "Layout Generation",
+    progress: 72,
+    etaSeconds: 134,
+    status: "running",
+  },
+  {
+    id: "job-2",
+    projectId: "prj-library-extension",
+    projectName: "Library Extension",
+    stage: "Optimization",
+    progress: 46,
+    etaSeconds: 337,
+    status: "running",
+  },
+  {
+    id: "job-3",
+    projectId: "prj-school-block",
+    projectName: "School Block",
+    stage: "Layout Search",
+    progress: 18,
+    etaSeconds: 729,
+    status: "running",
+  },
+];
+
+export function getProject(id: string): Project | undefined {
+  return projects.find((p) => p.id === id);
+}
+
+export const projectStatusLabel: Record<Project["status"], string> = {
+  draft: "Draft",
+  "in-progress": "In Progress",
+  optimizing: "Optimizing",
+  completed: "Completed",
+  archived: "Archived",
+};
+
+export const projectTypeLabel: Record<Project["type"], string> = {
+  education: "Education",
+  civic: "Civic",
+  office: "Office",
+  research: "Research",
+};
